@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../Admin/presentation/admin_add_doctor_page.dart';
 import 'cubits/categories_cubit.dart';
 import 'cubits/categories_state.dart';
 import 'cubits/doctors_cubit.dart';
@@ -77,6 +78,16 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.add, color: Colors.black87),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => AdminAddDoctorPage()),
+              );
+
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.search, color: Colors.black87),
             onPressed: () {
