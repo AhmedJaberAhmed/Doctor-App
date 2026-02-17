@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../orders/presentaion/BookingsPage.dart';
 import 'FavouritesPage.dart';
 import 'HomePage.dart';
 import 'SearchPage.dart';
-
 
 class MainNavigationPage extends StatefulWidget {
   const MainNavigationPage({super.key});
@@ -18,6 +18,7 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
   final List<Widget> _pages = [
     const HomePage(),
     const SearchPage(),
+    const BookingsPage(),
     const FavouritesPage(),
   ];
 
@@ -86,6 +87,17 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
                   child: Icon(Icons.search, size: 26),
                 ),
                 label: 'Search',
+              ),
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: EdgeInsets.only(bottom: 4),
+                  child: Icon(Icons.calendar_month_outlined, size: 26),
+                ),
+                activeIcon: Padding(
+                  padding: EdgeInsets.only(bottom: 4),
+                  child: Icon(Icons.calendar_month, size: 26),
+                ),
+                label: 'Bookings',
               ),
               BottomNavigationBarItem(
                 icon: Padding(
