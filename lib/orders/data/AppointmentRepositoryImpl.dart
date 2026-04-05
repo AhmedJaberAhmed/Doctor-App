@@ -13,13 +13,12 @@ class AppointmentRepositoryImpl implements AppointmentRepository {
   Future<List<Appointment>> getUserAppointments({
     AppointmentStatus? statusFilter,
   }) async {
-    var query = _supabase
-        .from('appointments')
-        .select('*, doctors(full_name, title, photo_path, clinic_name, clinic_address), profiles(full_name, phone)');
+    var query = _supabase.from('appointments').select(
+        '*, doctors(full_name, title, photo_path, clinic_name, clinic_address), profiles(full_name, phone)');
 
     final response = await (statusFilter != null
-        ? query.eq('status', _statusToString(statusFilter))
-        : query)
+            ? query.eq('status', _statusToString(statusFilter))
+            : query)
         .order('starts_at', ascending: false);
 
     return (response as List)
@@ -29,13 +28,10 @@ class AppointmentRepositoryImpl implements AppointmentRepository {
 
   @override
   Future<void> cancelAppointment(String appointmentId) async {
-    await _supabase
-        .from('appointments')
-        .update({
+    await _supabase.from('appointments').update({
       'status': 'cancelled',
       'updated_at': DateTime.now().toIso8601String(),
-    })
-        .eq('id', appointmentId);
+    }).eq('id', appointmentId);
   }
 
   String _statusToString(AppointmentStatus status) {
